@@ -81,6 +81,8 @@ class HybridRecommender:
         self.load_data(products, orders, reviews)
 
     def train(self):
+        if self.products_df is None:
+            self.load_dummy_data()
         self._build_content_similarity()
         self._build_collaborative_similarity()
         self.is_trained = True
